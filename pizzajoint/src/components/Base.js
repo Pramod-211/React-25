@@ -1,20 +1,28 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion'
+import { useTransition } from 'react';
 
 const Base = ({ addBase, pizza }) => {
   const bases = ['Classic', 'Thin & Crispy', 'Thick Crust'];
 
   return (
-    <div className="base container">
+    <motion.div className="base container"
+      initial={{ y: '-100vw' }}
+      animate={{ y: 0 }}
+      transition={{ type: 'spring', delay: .3, stiffness: 30 }}
+    >
 
       <h3>Step 1: Choose Your Base</h3>
       <ul>
         {bases.map(base => {
           let spanClass = pizza.base === base ? 'active' : '';
           return (
-            <li key={base} onClick={() => addBase(base)}>
-              <span className={spanClass}>{ base }</span>
-            </li>
+            <motion.li key={base} onClick={() => addBase(base)}
+              whileHover={{ scale: 1.3, originX: 0, color: 'Yellow' }}
+              transition={{ type: 'spring', stiffness: 300 }}>
+              <span className={spanClass}>{base}</span>
+            </motion.li>
           )
         })}
       </ul>
@@ -22,12 +30,19 @@ const Base = ({ addBase, pizza }) => {
       {pizza.base && (
         <div className="next">
           <Link to="/toppings">
-            <button>Next</button>
+            <motion.button
+              initial={{ x: '-100vh', opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ type: 'spring', stiffness: 120 }}
+              whileHover={{ scale: 1.1, textShadow: "0px 0px 8px rgb(255,255,255", boxShadow: "0px 0px 8px rgb(255,255,255" }}
+
+            >Next</motion.button>
           </Link>
         </div>
-      )}
+      )
+      }
 
-    </div>
+    </motion.div >
   )
 }
 
