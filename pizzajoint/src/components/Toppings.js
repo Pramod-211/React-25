@@ -50,6 +50,7 @@ const Toppings = ({ addTopping, pizza }) => {
               transition={{ type: 'spring', stiffness: 300 }}
             >
               <span className={spanClass}>{topping}</span>
+
             </motion.li>
           )
         })}
@@ -59,7 +60,7 @@ const Toppings = ({ addTopping, pizza }) => {
           variants={buttonVariants}
           whileHover="hover"
         >
-          Order
+          Orders
         </motion.button>
       </Link>
 
