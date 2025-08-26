@@ -48,5 +48,6 @@ const Home = () => {
     </motion.div>
   )
 }
+// this is just written using git hub
 
 export default Home;
